@@ -1,0 +1,20 @@
+{
+    "name": "sistemaphp/sistema",
+    "description": "Sistema em PHP 8",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "sistema\\": "sistema/"
+        },
+        "files":[
+         "sistema/configuracao.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Welberth Gomes dos Santos Santana"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
