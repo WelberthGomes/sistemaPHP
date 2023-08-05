@@ -2,9 +2,14 @@
 
 namespace sistema\shared;
 
+use sistema\suport\Template;
+
 class Controlador {
-    
-    public function __construct() {
-        echo 'foi iniciado';
+
+    protected Template $template;
+
+    public function __construct(string $diretorio) {
+        $this->template = new Template($diretorio);
     }
+
 }

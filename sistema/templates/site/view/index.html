@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+<div class="row ">
+    <div class="col-10">
+        <div class="row">
+            {% for post in posts %}
+            <div class="col-md-3" >
+                <div class="card mb-2 mt-2" style="box-shadow: 0 2px 10px 0 ">
+                    <div class="card-body">
+                        <h5 class="card-title">{{post.titulo}}</h5>
+                        <p class="card-text">{{resumirTexto(post.texto,100)}}</p>
+                        <a href="{{url('post/'~post.post_id)}}" >
+                            <strong>saiba mais</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+    <div class="col-2 d-flex">
+        {%include 'sidebar.html'%}
+    </div>
+
+</div>
+{% endblock %}

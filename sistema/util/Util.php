@@ -3,8 +3,15 @@
 namespace sistema\util;
 
 abstract class Util {
+    
+    public static function redirecionar(string $url = null): void {
+        header("HTTP/1.1 302 Found");
+        $local = ($url ? self::url($url) : self::url());
+        header("Location: {$local}");
+        exit();
+    }
 
-    public static function resumirTesto(string $texto, int $limite): string {
+    public static function resumirTexto(string $texto, int $limite): string {
         $textoLimpo = trim(strip_tags($texto));
         return (mb_strlen($textoLimpo) > $limite) ? (mb_substr($textoLimpo, 0, mb_strrpos(mb_substr($textoLimpo, 0, $limite), ''))) . '...' : $texto;
     }
@@ -13,7 +20,7 @@ abstract class Util {
         return 'R$ ' . number_format($valor, 2, ',', '.');
     }
 
-    public static function fomataNumero(int $valor = 0): string {
+    public static function formataNumero(int $valor = 0): string {
         return number_format($valor, 0, '.', '.');
     }
 
@@ -30,7 +37,7 @@ abstract class Util {
         return ($servidor == 'localhost');
     }
 
-    public static function url(string $uri): string {
+    public static function url(string $uri = null): string {
         $servidor = filter_input(INPUT_SERVER, 'SERVER_NAME');
         $ambiente = ($servidor == 'localhost' ? URL_DESENVOLVIMENTO : URL_PRODUCAO);
         return $ambiente . $uri;
